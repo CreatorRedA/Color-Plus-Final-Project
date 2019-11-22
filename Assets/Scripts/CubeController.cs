@@ -4,25 +4,33 @@ using UnityEngine;
 
 public class CubeController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    //Track individual cube positions
+    public int myX;
+    public int myY;
+    public bool isMovable;
+
+    //Empty
     void Start()
     {
-        
+
     }
 
-    // Update is called once per frame
+    //Empty
     void Update()
     {
         
     }
 
-    private void OnMouseOver()
+    void OnMouseDown() //Search for mouse clicks. Call ProcessMouseClick (GameController)
     {
-        
+        GameController.ProcessMouseClick(gameObject);
     }
-
-    private void OnMouseExit()
+    void OnMouseOver() //Changes size of cubePrefab to show it can be interacted with
     {
-        
+        GetComponent<Transform>().localScale = new Vector3(1.5f, 1.5f, 1.5f);
+    }
+    void OnMouseExit() //Resets size of cubePrefab when no longer interacting with it
+    {
+        GetComponent<Transform>().localScale = new Vector3(1, 1, 1);
     }
 }
